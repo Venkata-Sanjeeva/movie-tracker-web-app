@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'; // Add this at the very top
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import { AuthPage } from './components/Auth';
+import Dashboard from './components/Dashboard';
+import AddMovie from './components/AddMovie';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-vh-100 bg-black text-white">
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<AuthPage isLogin={true} />} />
+          <Route path="/register" element={<AuthPage isLogin={false} />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/add" element={<AddMovie />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
