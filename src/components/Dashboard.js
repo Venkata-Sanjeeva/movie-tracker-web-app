@@ -11,7 +11,8 @@ const Dashboard = () => {
 
     const loadMovies = async () => {
         const res = await MovieService.getMovies();
-        setMovies(res.data);
+        console.log("Movies loaded:", res.data); // Debug log to check data structure
+        setMovies(res.data.moviesList || []); // Adjust based on your actual response structure
     };
 
     const handleStatusChange = async (id, newStatus) => {
@@ -54,11 +55,11 @@ const Dashboard = () => {
                                 
                                 <div className="mt-3">
                                     <div className="btn-group w-100">
-                                        <button onClick={() => handleStatusChange(movie.id, 'DOWNLOADED')} 
+                                        <button onClick={() => handleStatusChange(movie.movieUID, 'DOWNLOADED')} 
                                             className={`btn btn-sm btn-outline-primary ${movie.status === 'DOWNLOADED' ? 'active' : ''}`}>
                                             Downloaded
                                         </button>
-                                        <button onClick={() => handleStatusChange(movie.id, 'WATCHED')} 
+                                        <button onClick={() => handleStatusChange(movie.movieUID, 'WATCHED')} 
                                             className="btn btn-sm btn-outline-success">
                                             Mark Watched
                                         </button>

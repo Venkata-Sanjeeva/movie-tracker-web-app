@@ -25,7 +25,7 @@ class MovieService {
 
     // Aligns with the PATCH endpoint for updating status
     updateStatus(id, status) { 
-        return axios.patch(`${API_BASE_URL}/user/movies/${id}/status`, { status }); 
+        return axios.patch(`${API_BASE_URL}/user/movies/${id}/status/${status}`); 
     }
 }
 
