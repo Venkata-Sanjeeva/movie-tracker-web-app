@@ -1,27 +1,39 @@
-import './App.css'; // Add this at the very top
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { AuthPage } from './components/Auth';
 import Dashboard from './components/Dashboard';
 import AddMovie from './components/AddMovie';
+import NotFound from './components/NotFound';
 
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-  return (
-    <div className="min-vh-100 bg-black text-white">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<AuthPage isLogin={true} />} />
-          <Route path="/register" element={<AuthPage isLogin={false} />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/add" element={<AddMovie />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+    return (
+        <div className="min-vh-100 bg-black text-white">
+            <Router>
+                <Navbar />
+                <Routes>
+
+                    <Route path="/" element={<Home />} />
+
+                    {/* Public Routes */}
+                    <Route path="/login" element={ <AuthPage isLogin={true} /> } />
+                    <Route path="/register" element={ <AuthPage isLogin={false} /> }/>
+
+                    {/* Protected Routes */}
+                    <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>
+                    <Route path="/add" element={<ProtectedRoute><AddMovie /></ProtectedRoute>}/>
+
+                    {/* 404 */}
+                    <Route path="*" element={<NotFound />} />
+
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

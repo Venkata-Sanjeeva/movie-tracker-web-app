@@ -29,4 +29,7 @@ class MovieService {
     }
 }
 
-export default new MovieService();
+// ✅ assign instance to a variable first
+const movieService = new MovieService();
+
+export default movieService;
