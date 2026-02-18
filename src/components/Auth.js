@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import ToastMessage from "./ToastMessage";
 import Loader from './Loader';
@@ -20,7 +20,7 @@ export const AuthPage = ({ isLogin }) => {
         try {
             setLoading(true);
 
-            const res = await axios.post(`http://localhost:8080${endpoint}`, form);
+            const res = await axios.post(`${endpoint}`, form);
 
             if (isLogin) {
                 localStorage.setItem("user", JSON.stringify(res.data));
@@ -82,6 +82,9 @@ export const AuthPage = ({ isLogin }) => {
                             <button className="btn btn-info w-100 fw-bold">
                                 {isLogin ? 'Login' : 'Register'}
                             </button>
+                            <div className="text-center mt-3">
+                                <Link to="/forgot-password" size="sm" className="text-info text-decoration-none small">Forgot Password?</Link>
+                            </div>
                         </form>
                     )}
                 </div>

@@ -9,6 +9,8 @@ import AddMovie from './components/AddMovie';
 import NotFound from './components/NotFound';
 
 import ProtectedRoute from './components/ProtectedRoute';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
 
 function App() {
     return (
@@ -22,6 +24,8 @@ function App() {
                     {/* Public Routes */}
                     <Route path="/login" element={ <AuthPage isLogin={true} /> } />
                     <Route path="/register" element={ <AuthPage isLogin={false} /> }/>
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
 
                     {/* Protected Routes */}
                     <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>
