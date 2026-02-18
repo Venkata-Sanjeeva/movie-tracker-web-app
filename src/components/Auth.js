@@ -4,6 +4,8 @@ import axios from 'axios';
 import ToastMessage from "./ToastMessage";
 import Loader from './Loader';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 export const AuthPage = ({ isLogin }) => {
     const [form, setForm] = useState({ name: '', password: '', email: '' });
     const navigate = useNavigate();
@@ -15,12 +17,11 @@ export const AuthPage = ({ isLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const endpoint = isLogin ? "/api/auth/login" : "/api/auth/user/register";
+        const endpoint = isLogin ? "/auth/login" : "/auth/user/register";
 
         try {
             setLoading(true);
-
-            const res = await axios.post(`${endpoint}`, form);
+            const res = await axios.post(`${API_BASE_URL}${endpoint}`, form);
 
             if (isLogin) {
                 localStorage.setItem("user", JSON.stringify(res.data));

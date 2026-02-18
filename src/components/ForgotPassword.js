@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ToastMessage from "./ToastMessage";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState({ text: '', type: '' });
@@ -16,7 +18,7 @@ const ForgotPassword = () => {
             const params = new URLSearchParams();
             params.append('email', email);
 
-            const res = await axios.post(`http://localhost:8080/api/email/forgot-password`, params);
+            const res = await axios.post(`${API_BASE_URL}/email/forgot-password`, params);
             setMessage({ text: res.data, type: 'success' });
         } catch (err) {
             setMessage({ text: "Failed to send reset link.", type: 'danger' });

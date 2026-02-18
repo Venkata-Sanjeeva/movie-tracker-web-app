@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import ToastMessage from "./ToastMessage";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 const ResetPassword = () => {
     const [searchParams] = useSearchParams();
     const token = searchParams.get("token"); // Extracts 'token' from ?token=xyz
@@ -22,7 +24,7 @@ const ResetPassword = () => {
 
         try {
             // Matches your ResetPasswordRequest DTO in Spring Boot
-            const res = await axios.post(`http://localhost:8080/api/email/reset-password`, {
+            const res = await axios.post(`${API_BASE_URL}/email/reset-password`, {
                 token: token,
                 newPassword: newPassword
             });

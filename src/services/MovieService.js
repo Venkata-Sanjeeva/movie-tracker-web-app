@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 // This interceptor automatically grabs the token from storage 
 // and puts it in the 'Authorization' header for every request
