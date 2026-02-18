@@ -1,0 +1,40 @@
+/* Custom Border */
+.navbar {
+  border-bottom: 1px solid #2d2f3b;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Mobile Animation Logic */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    display: block !important;
+    /* Set initial state for animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease;
+    opacity: 0;
+    border: none;
+  }
+
+  /* When the 'show' class is added by React */
+  .navbar-collapse.show {
+    max-height: 300px; /* Adjust based on your menu height */
+    opacity: 1;
+    padding-bottom: 1rem;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Optional: Hamburger Icon rotation effect */
+.navbar-toggler {
+  border: none !important;
+  outline: none !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}

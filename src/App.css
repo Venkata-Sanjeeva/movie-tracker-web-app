@@ -5,9 +5,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.navbar {
-  border-bottom: 1px solid #2d2f3b;
-}
+
 
 /* Fix for Card visibility in Dark Mode */
 .card {
